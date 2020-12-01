@@ -1,0 +1,4 @@
+.idea/
+*.pyc
+sample*.txt
+venv/
