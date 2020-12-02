@@ -1,4 +1,5 @@
 .idea/
 *.pyc
 sample*.txt
+sandbox*
 venv/
