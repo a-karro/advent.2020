@@ -1,11 +1,3 @@
-def manhattan(p1, p2):
-    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
-
-
-def add_delta(point, delta):
-    return tuple(sum(x) for x in zip(point, delta))
-
-
 DIRS = {
     'U': (0, -1),
     'D': (0, 1),
@@ -20,3 +12,11 @@ COMPASS = {
     'W': (-1, 0),
     'E': (1, 0)
 }
+
+
+def manhattan(p1, p2):
+    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+
+
+def add_delta(point, delta):
+    return tuple(sum(x) for x in zip(point, delta))
