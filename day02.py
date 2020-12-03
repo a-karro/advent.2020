@@ -6,10 +6,8 @@ good_one, good_two = 0, 0
 for line in lines:
     parts = re.findall(r'(\d+)-(\d+) (.): (.+)', line)[0]
     chmin, chmax, letter, pwd = int(parts[0]), int(parts[1]), parts[2], parts[3]
-    good_one += 1 if chmin <= pwd.count(letter) <= chmax else 0
-    if pwd[chmin-1] == letter and pwd[chmax-1] != letter or \
-        pwd[chmin-1] != letter and pwd[chmax-1] == letter:
-        good_two += 1
+    good_one += chmin <= pwd.count(letter) <= chmax
+    good_two += (pwd[chmin-1] == letter) ^ (pwd[chmax-1] == letter)
 
 print("Puzzle 2.1: ", good_one)
 print("Puzzle 2.2: ", good_two)
