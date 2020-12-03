@@ -3,3 +3,4 @@
 sample*.txt
 sandbox*
 venv/
+__pycache__/
