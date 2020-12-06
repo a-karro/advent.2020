@@ -1,9 +1,7 @@
 import string
 
-fields2 = sorted({'byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'})
-
-with open('data/day04.txt', 'r') as f:
-    passports = [a.split() for a in "&".join(f.read().splitlines()).replace('&&', '^^').replace('&', ' ').split('^^')]
+fields = ['byr', 'ecl', 'eyr', 'hcl', 'hgt', 'iyr', 'pid']
+passports = [r.replace('\n', ' ').split() for r in open('data/day04.txt', 'r').read().split('\n\n')]
 
 valid = []
 for passport in passports:
@@ -12,7 +10,7 @@ for passport in passports:
         k, v = x.split(':')
         psp[k] = v
     psp.pop('cid', None)
-    if sorted(psp.keys()) == fields2:
+    if sorted(psp.keys()) == fields:
         valid.append(psp)
 
 print("Puzzle 4.1: ", len(valid))
