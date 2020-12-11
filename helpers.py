@@ -19,4 +19,4 @@ def manhattan(p1, p2):
 
 
 def add_delta(point, delta):
-    return tuple(sum(x) for x in zip(point, delta))
+    return point[0] + delta[0], point[1] + delta[1]
