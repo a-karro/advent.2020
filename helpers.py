@@ -1,4 +1,4 @@
-import math
+from collections import Iterable
 
 DIRS = {
     'U': (0, -1),
@@ -29,3 +29,44 @@ def manhattan(p1, p2):
 
 def add_delta(point, delta, offset=1):
     return point[0] + delta[0]*offset, point[1] + delta[1]*offset
+
+
+def match_brackets(l_, brackets='()'):
+    op = -1
+    opc = clc = 0
+    for i, c in enumerate(l_):
+        if c == brackets[0]:
+            opc += 1
+            if op < 0:
+                op = i
+        if c == brackets[1]:
+            clc += 1
+            if opc == clc:
+                return op, i+1
+    raise ValueError("Didn't find matching brackets")
+
+
+def pad(s):
+    return ' ' + s + ' '
+
+
+def get_first_bracket_content(string, brackets='()'):
+    try:
+        i = match_brackets(string, brackets)
+        return string[i[0]+1:i[1]-1]
+    except ValueError:
+        return ""
+
+
+def strip_sides(string, length):
+    return string[length:len(string)-length]
+
+
+def flatten(items):
+    """Yield items from any nested iterable; see Reference."""
+    for x in items:
+        if isinstance(x, Iterable) and not isinstance(x, (str, bytes)):
+            for sub_x in flatten(x):
+                yield sub_x
+        else:
+            yield x
