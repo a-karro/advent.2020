@@ -44,8 +44,8 @@ def part2(p1, p2):
     rc = 0
     while True:
         rc += 1
-        ns1 = norm_slice(list(p1))
-        ns2 = norm_slice(list(p2))
+        ns1 = norm_slice(p1)
+        ns2 = norm_slice(p2)
         if ns1 in rounds_p1 and ns2 in rounds_p2:
             return p1, p2, 0
         pc1 = p1.popleft()
