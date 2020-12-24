@@ -23,12 +23,25 @@ COMPASS_INV = {
 }
 
 
+HEX = {
+    'E': (+1, -1, 0),
+    'NE': (+1, 0, -1),
+    'NW': (0, +1, -1),
+    'W': (-1, +1, 0),
+    'SW': (-1, 0, +1),
+    'SE': (0, -1, +1)
+}
+
+
 def manhattan(p1, p2):
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
 
 def add_delta(point, delta, offset=1):
-    return point[0] + delta[0]*offset, point[1] + delta[1]*offset
+    r = []
+    for i, x in enumerate(point):
+        r.append(x + delta[i]*offset)
+    return tuple(r)
 
 
 def match_brackets(l_, brackets='()'):
