@@ -52,32 +52,26 @@ class Cups:
                 x = self.data[x]
         return r
 
+    def play(self, limit):
+        cnt = 0
+        while cnt < limit:
+            cnt += 1
+            if cnt % 1_000_000 == 0:
+                print("moves: ", cnt)
+            self.remove_3()
+            dest = self.calc_dest()
+            self.insert_3_at_dest(dest)
+            self.move_to_next()
+
 
 s = [int(c) for c in open('data/day23.txt', 'r').read()]
 dl = len(s)
 
 cups = Cups(s)
-cnt = 0
-while cnt < 100:
-    cnt += 1
-    cups.remove_3()
-    dest = cups.calc_dest()
-    cups.insert_3_at_dest(dest)
-    cups.move_to_next()
-
+cups.play(100)
 print("Puzzle 23.1: ", cups.get_from_1(two=False))
 
 s.extend(list(range(cups.mx+1, 1_000_001)))
 cups = Cups(s)
-
-cnt = 0
-while cnt < 10_000_000:
-    cnt += 1
-    if cnt % 1_000_000 == 0:
-        print("moves: ", cnt)
-    cups.remove_3()
-    dest = cups.calc_dest()
-    cups.insert_3_at_dest(dest)
-    cups.move_to_next()
-
+cups.play(10_000_000)
 print("Puzzle 23.2: ", cups.get_from_1(two=True))
