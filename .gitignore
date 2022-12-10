@@ -1,6 +1,6 @@
 .idea/
 *.pyc
-sample*.txt
+data/
 sandbox*
 venv/
 __pycache__/
